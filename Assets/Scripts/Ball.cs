@@ -7,33 +7,38 @@ public class Ball : MonoBehaviour
     public float speed;
     Rigidbody2D rb;
     private float speedy, speedx;
-    Vector2 velocidad;
-    private bool jugando;
+    Vector2 velocidad, parado;
+    private bool jugando, fuerza;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
-        velocidad = new Vector2(0, 0);
-        speedy = speedx = speed;
-        jugando = true;
+        velocidad = parado = new Vector2(0, 0);
+        speedy = speedx = speed*50;
+        jugando = false;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && jugando)
+        if (Input.GetKeyDown(KeyCode.Return) && !jugando)
         {
             rb.isKinematic = false;
 
             transform.SetParent(null);
 
-            velocidad = new Vector2(0, speedy);
+            velocidad = new Vector2(speedx, speedy);
 
-            jugando = false;
+            jugando = true;
         }
     }
+
     private void FixedUpdate()
     {
-        if (!jugando) rb.AddForce(velocidad);
+        if (rb.velocity == parado && jugando) 
+        {
+            rb.AddForce(velocidad);
+            jugando = false;
+        }
     }
 }
