@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3147113143737278208}
   - component: {fileID: 5594082918163810577}
   - component: {fileID: -6821590721444701131}
+  - component: {fileID: -4542262361751477330}
   m_Layer: 8
   m_Name: Fire
   m_TagString: Untagged
@@ -145,3 +146,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   golpesAntesDeMorir: 1
   puntosGanados: 0
+  dieObject: {fileID: 0}
+--- !u!114 &-4542262361751477330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8238950139230885869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d992b61874a12cd46aa9843340a1238f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2

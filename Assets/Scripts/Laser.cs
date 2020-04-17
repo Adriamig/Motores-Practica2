@@ -7,20 +7,22 @@ public class Laser : MonoBehaviour
     public GameObject FirePref;
     public Transform spawnLaser;
     public Sprite naveFire;
-    private Rigidbody2D rb;
-
+    private Sprite miNave;
     void Start()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = naveFire;
+        miNave = gameObject.GetComponent<SpriteRenderer>().sprite;
+        gameObject.GetComponent<SpriteRenderer>().sprite = naveFire;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject fire = Instantiate(FirePref, spawnLaser);
-            rb = fire.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(0, 10);
+            Instantiate(FirePref, spawnLaser);
         }
+    }
+    private void OnDisable()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = miNave;
     }
 }

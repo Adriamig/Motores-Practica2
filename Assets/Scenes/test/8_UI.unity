@@ -1195,7 +1195,7 @@ GameObject:
   - component: {fileID: 1619960922}
   - component: {fileID: 1619960921}
   - component: {fileID: 1619960920}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: DeathZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

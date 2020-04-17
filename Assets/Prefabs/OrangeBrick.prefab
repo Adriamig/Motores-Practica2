@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   golpesAntesDeMorir: 1
   puntosGanados: 5
+  dieObject: {fileID: 0}
 --- !u!61 &-8909302254486566995
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -135,3 +136,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4d743149afe244688fb4fd64643298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brick: {fileID: 3108771991289046524}

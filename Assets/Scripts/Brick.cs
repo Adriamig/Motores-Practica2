@@ -8,4 +8,12 @@ public class Brick : MonoBehaviour
     {
         GameManager.instance.AddBrick();
     }
+    private void Update()
+    {
+        if(this.gameObject == null)
+        {
+            Debug.Log("Esta muertito");
+            GameManager.instance.BrickDestroyed();
+        }
+    }
 }

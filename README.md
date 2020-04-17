@@ -7,4 +7,4 @@
 - Apartado 4
 - Apartado 5
 - Apartado 6
-- Mitad del 7
+- Apartado 7

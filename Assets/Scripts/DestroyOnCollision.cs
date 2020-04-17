@@ -5,6 +5,7 @@ using UnityEngine;
 public class DestroyOnCollision : MonoBehaviour
 {
     public float golpesAntesDeMorir, puntosGanados;
+    public GameObject dieObject;
     private float golpesPegados = 0;
     
 
@@ -15,7 +16,11 @@ public class DestroyOnCollision : MonoBehaviour
         {
             Destroy(this.gameObject);
             GameManager.instance.AddPuntos(puntosGanados);
-            GameManager.instance.BrickDestroyed();
+            if(dieObject != null)
+            {
+                GameObject powerUp = Instantiate(dieObject);
+                powerUp.transform.position = this.gameObject.transform.position;
+            }
         }
     }
 }
