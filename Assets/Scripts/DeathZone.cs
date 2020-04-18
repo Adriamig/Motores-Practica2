@@ -8,5 +8,7 @@ public class DeathZone : MonoBehaviour
     {
         if (other.gameObject.GetComponent<LostBall>()) 
             other.gameObject.GetComponent<LostBall>().OnLost();
+        if (other.gameObject.tag == "PowerUp")
+            Destroy(other.gameObject);
     }
 }

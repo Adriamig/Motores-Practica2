@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DestroyOnCollision : MonoBehaviour
 {
-    public float golpesAntesDeMorir, puntosGanados;
+    public int golpesAntesDeMorir, puntosGanados;
     public GameObject dieObject;
-    private float golpesPegados = 0;
+    private int golpesPegados = 0;
     
 
     private void OnCollisionEnter2D(Collision2D other)

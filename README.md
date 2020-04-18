@@ -8,3 +8,5 @@
 - Apartado 5
 - Apartado 6
 - Apartado 7
+- Apartado 8
+- Movimiento mejorado de la bola al colisionar con la pala

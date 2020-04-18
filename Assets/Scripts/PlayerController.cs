@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 movimiento;
     public float velocityScale;
+    private float width;
 
     void Start()
     {
@@ -22,10 +23,17 @@ public class PlayerController : MonoBehaviour
         movimiento.Normalize();
 
         movimiento *= velocityScale;
+
+        width = GetComponent<BoxCollider2D>().size.x / 2f;
     }
 
     private void FixedUpdate()
     {
         rb.velocity = movimiento;
+    }
+
+    public float HitFactor(Vector2 ballPos)
+    {
+        return (ballPos.x - transform.position.x) / width;
     }
 }
