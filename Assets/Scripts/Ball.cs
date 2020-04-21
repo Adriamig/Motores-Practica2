@@ -22,7 +22,7 @@ public class Ball : MonoBehaviour
 
             transform.SetParent(null);
 
-            velocidad = new Vector2(Random.Range(-10, 10), 1);
+            velocidad = new Vector2(Random.Range(-1, 1), 1);
 
             velocidad.Normalize();
 

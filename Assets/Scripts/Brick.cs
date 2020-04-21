@@ -8,12 +8,16 @@ public class Brick : MonoBehaviour
     {
         GameManager.instance.AddBrick();
     }
-    private void Update()
+
+    private void OnDisable()
     {
-        if(this.gameObject == null)
+        GameManager.instance.BrickDestroyed();
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (GameManager.instance.FinalDeJuego())
         {
-            Debug.Log("Esta muertito");
-            GameManager.instance.BrickDestroyed();
+            other.gameObject.GetComponent<LostBall>().FinalDeJuego();
         }
     }
 }

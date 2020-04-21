@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movimiento;
     public float velocityScale;
     private float width;
+    private bool stop = false;
 
     void Start()
     {
@@ -25,10 +26,16 @@ public class PlayerController : MonoBehaviour
         movimiento *= velocityScale;
 
         width = GetComponent<BoxCollider2D>().size.x / 2f;
+
+        if(GameManager.instance.FinalDeJuego() && !stop)
+        {
+            stop = true;
+        }
     }
 
     private void FixedUpdate()
     {
+        if(!stop)
         rb.velocity = movimiento;
     }
 

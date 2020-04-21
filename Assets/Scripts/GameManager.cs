@@ -9,18 +9,19 @@ public class GameManager : MonoBehaviour
     UIManager theUIManager;
 
     public int puntos = 0;
-    private int vidas = 3;
     public int brick = 0;
+
+    private int vidas = 3;
 
     void Awake() // Comprobar que solo hay un GameManager
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
 
-        else Destroy(this.gameObject);
+        else Destroy(gameObject);
     }
 
     public void AddPuntos(int puntuacion)
@@ -36,7 +37,11 @@ public class GameManager : MonoBehaviour
         bool vivo = true;
         vidas--;
         theUIManager.LifeLost();
-        if (vidas == 0) vivo = false;
+        if (vidas == 0)
+        {
+            vivo = false;
+            theUIManager.FinishGame(vivo);
+        }
         Debug.Log("Vidas: " + vidas);
         return vivo;
     }
@@ -53,8 +58,26 @@ public class GameManager : MonoBehaviour
         Debug.Log("Ladrillos: " + brick);
     }
 
+    public bool FinalDeJuego()
+    {
+        bool ultimoBrick = false;
+        if (brick == 0)
+        {
+            ultimoBrick = true;
+            theUIManager.FinishGame(ultimoBrick);
+        }
+        if (vidas == 0)
+            return true;
+        return ultimoBrick;
+    }
+
     public void SetUIManager(UIManager uim) // Comprobar solo un UI y actualizarlo
     {
         theUIManager = uim;
+    }
+
+    public void ChangeScene(string nameScene)
+    {
+        SceneManager.LoadScene(nameScene);
     }
 }

@@ -24,7 +24,11 @@ public class LostBall : MonoBehaviour
 
             transform.position = spawnPoint.position;
         }
+        else Destroy(gameObject);
+    }
 
-        else Destroy(this.gameObject);
+    public void FinalDeJuego()
+    {
+        Destroy(gameObject);
     }
 }
