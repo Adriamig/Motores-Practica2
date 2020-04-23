@@ -7,7 +7,7 @@ public class Enlarge : MonoBehaviour
     public Sprite naveGrande;
     private Sprite miNave;
 
-    void Start()
+    void OnEnable()
     {
         miNave = gameObject.GetComponent<SpriteRenderer>().sprite;
         gameObject.GetComponent<SpriteRenderer>().sprite = naveGrande;

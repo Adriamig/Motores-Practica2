@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour
 
         width = GetComponent<BoxCollider2D>().size.x / 2f;
 
-        if(GameManager.instance.FinalDeJuego() && !stop)
+        /*if(GameManager.instance.FinalDeJuego() && !stop)
         {
             stop = true;
-        }
+        }*/
     }
 
     private void FixedUpdate()

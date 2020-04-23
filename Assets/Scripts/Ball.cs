@@ -5,13 +5,14 @@ public class Ball : MonoBehaviour
 {
     public float speed;
     Rigidbody2D rb;
-    Vector2 velocidad;
+    Vector2 velocidad, parado;
     private bool jugando = false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
+        parado = Vector2.zero;
     }
 
     void Update()
@@ -22,7 +23,7 @@ public class Ball : MonoBehaviour
 
             transform.SetParent(null);
 
-            velocidad = new Vector2(Random.Range(-1, 1), 1);
+            velocidad = new Vector2(Random.Range(-10, 10), Random.Range(1, 10));
 
             velocidad.Normalize();
 
@@ -34,7 +35,7 @@ public class Ball : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (jugando) 
+        if (jugando && rb.velocity == parado) 
         {
             rb.velocity = velocidad;
             jugando = false;
@@ -53,7 +54,7 @@ public class Ball : MonoBehaviour
 
             velocidad *= speed;
 
-            jugando = true;
+            rb.velocity = velocidad;
         }
     }
 }

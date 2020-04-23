@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         if (vidas == 0)
         {
             vivo = false;
-            theUIManager.FinishGame(vivo);
+            LevelFinished(vivo);
         }
         Debug.Log("Vidas: " + vidas);
         return vivo;
@@ -56,20 +56,21 @@ public class GameManager : MonoBehaviour
     {
         brick--;
         Debug.Log("Ladrillos: " + brick);
+        if (brick == 0)
+            LevelFinished(true);
     }
 
-    public bool FinalDeJuego()
+    private void LevelFinished(bool playerWins)
     {
-        bool ultimoBrick = false;
-        if (brick == 0)
+        if (playerWins)
         {
-            ultimoBrick = true;
-            theUIManager.FinishGame(ultimoBrick);
+            if(SceneManager.GetActiveScene().name == "Level1")
+                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+            else theUIManager.FinishGame(playerWins);
         }
-        if (vidas == 0)
-            return true;
-        return ultimoBrick;
+        else theUIManager.FinishGame(playerWins);
     }
+
 
     public void SetUIManager(UIManager uim) // Comprobar solo un UI y actualizarlo
     {
@@ -78,6 +79,6 @@ public class GameManager : MonoBehaviour
 
     public void ChangeScene(string nameScene)
     {
-        SceneManager.LoadScene(nameScene);
+        SceneManager.LoadScene(nameScene, LoadSceneMode.Single);
     }
 }

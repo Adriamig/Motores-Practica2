@@ -8,7 +8,8 @@ public class Laser : MonoBehaviour
     public Transform spawnLaser;
     public Sprite naveFire;
     private Sprite miNave;
-    void Start()
+
+    void OnEnable()
     {
         miNave = gameObject.GetComponent<SpriteRenderer>().sprite;
         gameObject.GetComponent<SpriteRenderer>().sprite = naveFire;
@@ -21,6 +22,7 @@ public class Laser : MonoBehaviour
             Instantiate(FirePref, spawnLaser);
         }
     }
+
     private void OnDisable()
     {
         gameObject.GetComponent<SpriteRenderer>().sprite = miNave;

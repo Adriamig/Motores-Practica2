@@ -7,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     public Text scoreText, finishText;
     public GameObject finishPanel;
+    public Button volverMenu;
     public Image[] life;
-
     private int numVida = 0;
 
     void Start()
@@ -21,16 +21,17 @@ public class UIManager : MonoBehaviour
     public void FinishGame(bool playerWins)
     {
         finishPanel.SetActive(true);
-        switch (playerWins)
+        if (playerWins)
         {
-            case true:
-                finishPanel.GetComponent<Image>().color = new Color(255, 255, 0, 0.4f);
-                finishText.GetComponent<Text>().text = "Has ganado UwU";
-                break;
-            case false:
-                finishPanel.GetComponent<Image>().color = new Color(170, 0, 255, 0.4f);
-                finishText.GetComponent<Text>().text = "Has perdido :'(";
-                break;
+            finishPanel.GetComponent<Image>().color = new Color(255, 255, 0, 0.3f);
+            finishText.GetComponent<Text>().text = "Has\nganado :)";
+            volverMenu.GetComponent<Button>().image.color = new Color(255, 255, 0);
+        }
+        else
+        {
+            finishPanel.GetComponent<Image>().color = new Color(170, 0, 255, 0.3f);
+            finishText.GetComponent<Text>().text = "Has\nperdido :'(";
+            volverMenu.GetComponent<Button>().image.color = new Color(170, 0, 255);
         }
     }
 

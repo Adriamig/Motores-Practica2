@@ -26,9 +26,4 @@ public class LostBall : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
-    public void FinalDeJuego()
-    {
-        Destroy(gameObject);
-    }
 }

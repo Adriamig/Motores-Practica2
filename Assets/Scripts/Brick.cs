@@ -13,11 +13,4 @@ public class Brick : MonoBehaviour
     {
         GameManager.instance.BrickDestroyed();
     }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (GameManager.instance.FinalDeJuego())
-        {
-            other.gameObject.GetComponent<LostBall>().FinalDeJuego();
-        }
-    }
 }
