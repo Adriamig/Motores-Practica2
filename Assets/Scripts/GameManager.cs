@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     {
         if (playerWins)
         {
-            if(SceneManager.GetActiveScene().name == "Level1")
+            if(SceneManager.GetActiveScene().name == "Level1" && vidas != 0)
                 SceneManager.LoadScene("Level2", LoadSceneMode.Single);
             else theUIManager.FinishGame(playerWins);
         }

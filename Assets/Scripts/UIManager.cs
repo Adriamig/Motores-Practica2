@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        finishPanel.SetActive(false);
         GameManager.instance.SetUIManager(this);
         UpdateScore(0);
     }
