@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Brick : MonoBehaviour
 {
     void Start()
     {
-        GameManager.instance.AddBrick();
-    }
+        GameManager.instance.AddBrick(); // Llamamos al GameManager para avisarque se ha añadaido un brick
+    }  // Se activa cuando se inicia la escena
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        GameManager.instance.BrickDestroyed();
-    }
+        GameManager.instance.BrickDestroyed(); // LLamamos al GamManager para decir que se ha destruido un brick
+    } // Se activa cuando el GamObject es destruido
 }

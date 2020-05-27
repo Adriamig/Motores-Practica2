@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8432341710267991155}
   - component: {fileID: 3762854551306788749}
   - component: {fileID: 1522306926923810894}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SilverBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

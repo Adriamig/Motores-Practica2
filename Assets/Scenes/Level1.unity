@@ -1173,6 +1173,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 83261713181604240, guid: 72990151c8e40964ab9294ef13d5df76,
+        type: 3}
+      propertyPath: dieObject
+      value: 
+      objectReference: {fileID: 3742057779459380225, guid: ebf0bc0adac64d844ae7459dbd04216c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72990151c8e40964ab9294ef13d5df76, type: 3}
 --- !u!4 &366449424 stripped
@@ -1441,11 +1447,10 @@ MonoBehaviour:
   scoreText: {fileID: 656590410}
   finishText: {fileID: 334956968}
   finishPanel: {fileID: 1169650442}
-  volverMenu: {fileID: 1236379688}
   life:
-  - {fileID: 1623187250}
-  - {fileID: 822207271}
   - {fileID: 2130257208}
+  - {fileID: 822207271}
+  - {fileID: 1623187250}
 --- !u!114 &510598905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4018,10 +4023,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1619960919}
   - component: {fileID: 1619960923}
-  - component: {fileID: 1619960922}
   - component: {fileID: 1619960921}
   - component: {fileID: 1619960920}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: DeathZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4080,44 +4084,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e601f14bc09a63489503fb142535b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!23 &1619960922
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1619960918}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!33 &1619960923
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5446,6 +5412,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492236412206397543, guid: 5361a3ff255a2794f8a687190f87d7d2,
+        type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492236410321691049, guid: 5361a3ff255a2794f8a687190f87d7d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492236410321691050, guid: 5361a3ff255a2794f8a687190f87d7d2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492236412206397541, guid: 5361a3ff255a2794f8a687190f87d7d2,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5361a3ff255a2794f8a687190f87d7d2, type: 3}

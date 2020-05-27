@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 83261713181604240}
   - component: {fileID: -8909302254486566995}
   - component: {fileID: 8822083705442660214}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: OrangeBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

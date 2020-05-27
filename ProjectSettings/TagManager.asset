@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - PowerUp
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -14,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - Laser
-  - Bola
+  - Fire
+  - Ball
   - Player
-  - PowerUp
-  - DeathZone
+  - PowerUps
+  - Bricks
   - 
   - 
   - 

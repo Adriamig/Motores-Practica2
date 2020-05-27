@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
     public Text scoreText, finishText;
     public GameObject finishPanel;
-    public Button volverMenu;
     public Image[] life;
-    private int numVida = 0;
+
+    private Button volverMenu;
 
     void Start()
     {
         GameManager.instance.SetUIManager(this);
-        UpdateScore(0);
+        volverMenu = finishPanel.transform.Find("BotonMenu").GetComponent<Button>();
     }
 
     public void FinishGame(bool playerWins)
@@ -24,22 +22,26 @@ public class UIManager : MonoBehaviour
         {
             finishPanel.GetComponent<Image>().color = new Color(255, 255, 0, 0.3f);
             finishText.GetComponent<Text>().text = "Has\nganado :)";
-            volverMenu.GetComponent<Button>().image.color = new Color(255, 255, 0);
+            volverMenu.image.color = new Color(255, 255, 0);
         }
         else
         {
             finishPanel.GetComponent<Image>().color = new Color(170, 0, 255, 0.3f);
             finishText.GetComponent<Text>().text = "Has\nperdido :'(";
-            volverMenu.GetComponent<Button>().image.color = new Color(170, 0, 255);
+            volverMenu.image.color = new Color(170, 0, 255);
         }
     }
 
-    public void LifeLost()
+    public void LifeLost(int numVida)
     {
         life[numVida].enabled = false;
-        numVida++;
     }
 
+    public void RemainingLifes(int lifes)
+    {
+        for (int i = 2; i >= lifes; i--)
+            LifeLost(i);
+    }
 
     public void UpdateScore(int points)
     {

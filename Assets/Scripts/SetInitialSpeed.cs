@@ -1,19 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SetInitialSpeed : MonoBehaviour
 {
-    public float speed;
+    public Vector2 speed;      // Variable publica para editar la velocidad en el editor de Unity
+    private Rigidbody2D rb;    // Variable para leer el componente Rigidbody del GameObject
 
     private void Start()
     {
-        // Como la velocidad es muy grande he decidido dividirlo entre 10 el valor dado para no poner decimales un Unity
-        speed = speed / 10f;
-    }
-
-    void Update()
-    {
-        this.gameObject.transform.Translate(0, speed, 0);
-    }
+        rb = GetComponent<Rigidbody2D>();           // Cogemos el componente RigidBody del gameObject
+        rb.velocity = speed;                        // Le damos la velocidad que queremos desde el editor de Unity
+    } // Solo se ejecuta en el Start ya que una vez modificada la velocidad
+      // no hace falta un Update para cambiarla
 }

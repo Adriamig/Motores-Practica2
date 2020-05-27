@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9018665024082627981}
   - component: {fileID: 7308573328354022945}
   - component: {fileID: 124928730747591366}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GoldBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

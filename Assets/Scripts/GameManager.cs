@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int brick = 0;
 
     private int vidas = 3;
+    private bool jugando = true;
 
     void Awake() // Comprobar que solo hay un GameManager
     {
@@ -20,8 +19,12 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-
         else Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        jugando = true;
     }
 
     public void AddPuntos(int puntuacion)
@@ -34,16 +37,14 @@ public class GameManager : MonoBehaviour
 
     public bool PlayerLoseLife()
     {
-        bool vivo = true;
         vidas--;
-        theUIManager.LifeLost();
+        theUIManager.LifeLost(vidas);
         if (vidas == 0)
         {
-            vivo = false;
-            LevelFinished(vivo);
+            LevelFinished(false);
         }
         Debug.Log("Vidas: " + vidas);
-        return vivo;
+        return (vidas > 0);
     }
 
     public void AddBrick()
@@ -56,29 +57,44 @@ public class GameManager : MonoBehaviour
     {
         brick--;
         Debug.Log("Ladrillos: " + brick);
-        if (brick == 0)
-            LevelFinished(true);
+
+        if (brick == 0 && vidas != 0) LevelFinished(true);
     }
 
     private void LevelFinished(bool playerWins)
     {
         if (playerWins)
         {
-            if(SceneManager.GetActiveScene().name == "Level1" && vidas != 0)
+            if (SceneManager.GetActiveScene().name == "Level1")
                 SceneManager.LoadScene("Level2", LoadSceneMode.Single);
-            else theUIManager.FinishGame(playerWins);
+            else
+            {
+                theUIManager.FinishGame(playerWins);
+                jugando = false;
+            }
         }
-        else theUIManager.FinishGame(playerWins);
+        else
+        {
+            theUIManager.FinishGame(playerWins);
+            jugando = false;
+        }
     }
 
+    public bool GetJugando()
+    {
+        return jugando;
+    }
 
     public void SetUIManager(UIManager uim) // Comprobar solo un UI y actualizarlo
     {
         theUIManager = uim;
+        theUIManager.RemainingLifes(vidas);
+        theUIManager.UpdateScore(puntos);
     }
 
     public void ChangeScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene, LoadSceneMode.Single);
+        Debug.Log("Actualizado");
     }
 }

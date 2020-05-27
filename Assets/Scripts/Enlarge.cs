@@ -1,25 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enlarge : MonoBehaviour
 {
-    public Sprite naveGrande;
-    private Sprite miNave;
+    private Vector3 miNave, naveLarga, hijosSin;
+    private float scale = 1.25f;
 
-    void OnEnable()
+    private void OnEnable()
     {
-        miNave = gameObject.GetComponent<SpriteRenderer>().sprite;
-        gameObject.GetComponent<SpriteRenderer>().sprite = naveGrande;
-        Destroy(gameObject.GetComponent<BoxCollider2D>());
-        gameObject.AddComponent<BoxCollider2D>();
+        miNave = naveLarga = transform.localScale;
+        naveLarga.x *= scale;
+        hijosSin.x = miNave.x / scale;
+        transform.localScale = naveLarga;
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).localScale = hijosSin;
     }
 
     private void OnDisable()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = miNave;
-        Destroy(gameObject.GetComponent<BoxCollider2D>());
-        gameObject.AddComponent<BoxCollider2D>();
+        transform.localScale = miNave;
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).localScale = miNave;
     }
    
 }

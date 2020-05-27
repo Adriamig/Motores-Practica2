@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7440142182091030589}
   - component: {fileID: 5387934230727736541}
   - component: {fileID: 1905614922468081551}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightBlueBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}

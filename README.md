@@ -10,3 +10,9 @@
 - Apartado 7
 - Apartado 8
 - Movimiento mejorado de la bola al colisionar con la pala
+
+## Errores:
+- Mecanicas: 11, 13
+- Scrpits:
+- - Generales: 13, 14
+- - DeathZone: 3
