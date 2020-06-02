@@ -17,7 +17,7 @@ public class Laser : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && GameManager.instance.GetJugando()) // En el caso de darle al spacebar
         {                                                                         // y estar jugando
-            Instantiate(firePref, spawnLaser); // Instancia un Fire en el lugar del spawn
+            Instantiate<GameObject>(firePref, spawnLaser); // Instancia un Fire en el lugar del spawn
         }
     }
 
