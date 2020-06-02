@@ -2,27 +2,42 @@
 
 public class Laser : MonoBehaviour
 {
-    public GameObject firePref;   // GameObject que se instancia posteriormente
-    public Transform spawnLaser;  // Sitio donde instanciar el GameObject posteriormente
-    public Sprite naveFire;       // Sprite de la nave mejorada
-    private Sprite miNave;        // Sprite original de la nave
+    // GameObject que se instancia posteriormente.
+    public GameObject firePref;
 
+    // Sitio donde instanciar el GameObject posteriormente.
+    public Transform spawnLaser;
+
+    // Sprite de la nave mejorada.
+    public Sprite naveFire;
+
+    // Sprite original de la nave.
+    private Sprite miNave;
+
+    // Se activa el activar el script.
     void OnEnable()
     {
-        miNave = gameObject.GetComponent<SpriteRenderer>().sprite;    // Guaradamos el sprite de la nave
-        gameObject.GetComponent<SpriteRenderer>().sprite = naveFire;  // Ponemos el sprite de la nave  mejorada
-    } // Se activa el activar el script
+        // Guardamos el sprite de la nave.
+        miNave = gameObject.GetComponent<SpriteRenderer>().sprite;
+
+        // Ponemos el sprite de la nave  mejorada.
+        gameObject.GetComponent<SpriteRenderer>().sprite = naveFire; 
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && GameManager.instance.GetJugando()) // En el caso de darle al spacebar
-        {                                                                         // y estar jugando
-            Instantiate<GameObject>(firePref, spawnLaser); // Instancia un Fire en el lugar del spawn
+        // En el caso de darle al spacebar y estar jugando,
+        if (Input.GetKeyDown(KeyCode.Space) && GameManager.instance.GetJugando()) 
+        {
+            // instancia un Fire en el lugar del spawn.
+            Instantiate<GameObject>(firePref, spawnLaser); 
         }
     }
 
+    // Se activa al desactivar el script.
     private void OnDisable()
     {
-        gameObject.GetComponent<SpriteRenderer>().sprite = miNave; // Ponemos la nave original guardada anteriormente
-    } // Se activa al desactivar el script
+        // Ponemos la nave original guardada anteriormente.
+        gameObject.GetComponent<SpriteRenderer>().sprite = miNave;
+    }
 }

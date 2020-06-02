@@ -11,17 +11,23 @@ public class MovimientoAnimacion : MonoBehaviour
 
     void Start()
     {
-        posicion = transform.position;  // Guardamos la posicion del gameObject
-        speed = speed / 10;             // Para que vaya mas lento
+        // Guardamos la posición del gameObject.
+        posicion = transform.position;
+
+        // Para que vaya más lento.
+        speed = speed / 10;            
     }
 
     
     void Update()
     {
-        if (transform.position.x >= posicion.x + alejamiento) // Cambiamos de velocidad cuando pas los limites
+        // Cambiamos de velocidad cuando pase los limites.
+        if (transform.position.x >= posicion.x + alejamiento) 
             speed = -speed;
         if (transform.position.x <= posicion.x - alejamiento)
             speed = -speed;
-        transform.Translate(speed, 0, 0);     // Al no tener RigidBody movemos los gameObject por Translate
+
+        // Al no tener RigidBody movemos los gameObject por Translate.
+        transform.Translate(speed, 0, 0);     
     }
 }

@@ -2,26 +2,36 @@
 
 public class LostBall : MonoBehaviour
 {
-    public Transform spawnPoint;    // Variable publica donde desde el editor ponemos el spawn de la bola
-    private Rigidbody2D rb;         // Variable para guardar el componente RigidBody del GameObject
+    // Variable pública donde desde el editor ponemos el spawn de la bola.
+    public Transform spawnPoint;
+
+    // Variable para guardar el componente RigidBody del GameObject.
+    private Rigidbody2D rb;         
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  // Le damos el valor del RigidBody del GameObject
+        // Le damos el valor del RigidBody del GameObject.
+        rb = GetComponent<Rigidbody2D>();  
     }
 
     public void OnLost()
     {
-        if (GameManager.instance.PlayerLoseLife()) // Si el GameManager le dice que tiene vidas (== true)
+        // Si el GameManager le dice que tiene vidas (== true),
+        if (GameManager.instance.PlayerLoseLife()) 
         {
-            rb.isKinematic = true;                      // Hacemos que la Bola sea cinematica
+            // hacemos que la Bola sea cinemática,
+            rb.isKinematic = true;
 
-            rb.velocity = Vector2.zero;                 // Le quitamos la velocidad que tenia
+            // le quitamos la velocidad que tenía,
+            rb.velocity = Vector2.zero;
 
-            transform.SetParent(spawnPoint.parent);     // Ponemos de padre la pala, la cual tiene de hijo al spawnPoint
+            // ponemos de padre la pala, la cual tiene de hijo al spawnPoint,
+            transform.SetParent(spawnPoint.parent);
 
-            transform.position = spawnPoint.position;   // Y la colocamos en la posicion del spawnPoint
+            // y la colocamos en la posición del spawnPoint.
+            transform.position = spawnPoint.position;  
         }
-        else Destroy(gameObject);                  // En el caso contario destruimos la Bola
+        // En caso contario, destruimos la Bola.
+        else Destroy(gameObject);                 
     }
 }
