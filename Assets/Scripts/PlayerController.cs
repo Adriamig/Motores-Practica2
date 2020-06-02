@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Le damos el valor del RigidBody del GameObject
-    } // Solo se activa al inicio de la escena
+    }
     
     void Update()
     {
@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
 
         width = GetComponent<BoxCollider2D>().bounds.size.x / 2f; // Y cogemos la anchura, ya que puede cambiar
                                                                   // su valor lo ponemos en el Update
-    } // Se activa una vez por frame
+    }
 
     private void FixedUpdate()
     {
         if(GameManager.instance.GetJugando())   // Si estamos jugando
         rb.velocity = movimiento;               // La pala se mueve, colocando el vector anterior
                                                 // en el vector de su velocidad
-    } // Metodo para cambiar componentes físicos de la escena por frame
+    }
 
     public float HitFactor(Vector2 ballPos)
     {

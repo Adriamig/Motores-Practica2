@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Le damos el valor del RigidBody del GameObject
-    } // Solo se activa al inicio de la escena
+    }
 
     private void Update()
     {
@@ -29,7 +29,12 @@ public class Ball : MonoBehaviour
             rb.velocity = velocidad;       // La bola se mueve, colocando el vector anterior
                                            // en el vector de su velocidad
         }
-    } // Se activa una vez por frame
+
+        if (!GameManager.instance.GetJugando()) // En el caso de que no estemos jugando
+        {
+            rb.velocity = Vector2.zero;         // Paramos la pelota para no poder perder vidas
+        }
+    }
 
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -50,5 +55,5 @@ public class Ball : MonoBehaviour
             rb.velocity = velocidad;                // La bola se mueve, colocando el vector anterior
                                                     // en el vector de su velocidad
         }
-    } // Se activa cada vez que detecta una colisión
+    }
 } 

@@ -5,7 +5,7 @@ public class Brick : MonoBehaviour
     void Start()
     {
         GameManager.instance.AddBrick(); // Llamamos al GameManager para avisarque se ha añadaido un brick
-    }  // Se activa cuando se inicia la escena
+    }
 
     private void OnDestroy()
     {

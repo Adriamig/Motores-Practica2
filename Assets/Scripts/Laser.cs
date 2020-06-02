@@ -15,11 +15,11 @@ public class Laser : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))   // En el caso de darle al spacebar
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && GameManager.instance.GetJugando()) // En el caso de darle al spacebar
+        {                                                                         // y estar jugando
             Instantiate(firePref, spawnLaser); // Instancia un Fire en el lugar del spawn
         }
-    } // Lee cada frame si ha habido cambios o interacciones
+    }
 
     private void OnDisable()
     {

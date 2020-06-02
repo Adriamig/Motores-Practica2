@@ -8,7 +8,7 @@ public class LostBall : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Le damos el valor del RigidBody del GameObject
-    } // Solo se activa al inicio de la escena
+    }
 
     public void OnLost()
     {

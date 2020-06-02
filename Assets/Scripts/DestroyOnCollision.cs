@@ -21,5 +21,5 @@ public class DestroyOnCollision : MonoBehaviour
                 powerUp.transform.position = this.gameObject.transform.position; // Se instancia en la posicion del padre
             }
         }
-    } // Cada vez que detectamos una colisión se activa este método
+    }
 }
