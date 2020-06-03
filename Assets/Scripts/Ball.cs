@@ -41,12 +41,14 @@ public class Ball : MonoBehaviour
             // La bola se mueve, colocando el vector anterior en el vector de su velocidad.
             rb.velocity = velocidad;      
         }
-        
-        // En el caso de que no estemos jugando,
-        if (!GameManager.instance.GetJugando()) 
+        if(GameManager.instance != null)
         {
-            // paramos la pelota para no poder perder vidas.
-            rb.velocity = Vector2.zero;        
+            // En el caso de que no estemos jugando,
+            if (!GameManager.instance.GetJugando())
+            {
+                // paramos la pelota para no poder perder vidas.
+                rb.velocity = Vector2.zero;
+            }
         }
     }
 

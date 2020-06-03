@@ -10,7 +10,3 @@
 - Apartado 7
 - Apartado 8
 - Movimiento mejorado de la bola al colisionar con la pala
-
-## Errores:
-- Scrpits:
-- - GameManager: 1, 4

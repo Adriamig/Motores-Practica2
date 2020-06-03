@@ -44,12 +44,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Si estamos jugando,
-        if (GameManager.instance.GetJugando())
-            // la pala se mueve, colocando el vector 
-            // anterior en el vector de su velocidad.
-            rb.velocity = movimiento;               
-                                                
+        if(GameManager.instance != null)
+        {
+            // Si estamos jugando,
+            if (GameManager.instance.GetJugando())
+                // la pala se mueve, colocando el vector 
+                // anterior en el vector de su velocidad.
+                rb.velocity = movimiento;
+        }
+        else rb.velocity = movimiento;
+
     }
 
     // Método que devuelve dónde ha chocado el Vector 2 sobre la pala.

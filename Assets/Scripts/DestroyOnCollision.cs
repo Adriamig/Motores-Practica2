@@ -23,8 +23,13 @@ public class DestroyOnCollision : MonoBehaviour
             // destruye este GameObject.
             Destroy(this.gameObject);
 
-            // y avisa al GameManager para que añada los puntos indicados.
-            GameManager.instance.AddPuntos(puntosGanados);
+            if(GameManager.instance != null)
+            {
+                // En el caso de que ya hemos pasado el nivel que no se reseteen los puntos
+                if(GameManager.instance.GetJugando())
+                    // y avisa al GameManager para que añada los puntos indicados.
+                    GameManager.instance.AddPuntos(puntosGanados);
+            }
 
             // En el caso de que hayamos puesto un GameObject
             // en Unity, es decir, que no sea nulo,

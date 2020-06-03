@@ -14,38 +14,42 @@ public class UIManager : MonoBehaviour
         // Actualizamos el UIManager.
         GameManager.instance.SetUIManager(this);
 
-        // Cojo el botón para cambiar su color.
-        volverMenu = finishPanel.transform.Find("ButtonVuelta").GetComponent<Button>(); 
+        if(finishPanel != null)
+            // Cojo el botón para cambiar su color.
+            volverMenu = finishPanel.transform.Find("ButtonVuelta").GetComponent<Button>(); 
     }                                                                                   
 
     public void FinishGame(bool playerWins)
     {
-        // Activamos el panel.
-        finishPanel.SetActive(true);
-
-        // Si el jugador gana,
-        if (playerWins) 
+        if(finishPanel != null)
         {
-            // la pantalla se pone de color amarillo,ç
-            finishPanel.GetComponent<Image>().color = new Color(255, 255, 0, 0.3f);
+            // Activamos el panel.
+            finishPanel.SetActive(true);
 
-            // sale un mensaje de victoria
-            finishText.GetComponent<Text>().text = "Has\nganado :)";
+            // Si el jugador gana,
+            if (playerWins)
+            {
+                // la pantalla se pone de color amarillo,ç
+                finishPanel.GetComponent<Image>().color = new Color(255, 255, 0, 0.3f);
 
-            // y el botón se pone amarillo.
-            volverMenu.image.color = new Color(255, 255, 0);                        
-        }
-        // En el caso de que no gane,
-        else
-        {
-            // la pantalla se pone de color morado, 
-            finishPanel.GetComponent<Image>().color = new Color(170, 0, 255, 0.3f);
+                // sale un mensaje de victoria
+                finishText.GetComponent<Text>().text = "Has\nganado :)";
 
-            // sale un mensaje de derrota
-            finishText.GetComponent<Text>().text = "Has\nperdido :'(";
+                // y el botón se pone amarillo.
+                volverMenu.image.color = new Color(255, 255, 0);
+            }
+            // En el caso de que no gane,
+            else
+            {
+                // la pantalla se pone de color morado, 
+                finishPanel.GetComponent<Image>().color = new Color(170, 0, 255, 0.3f);
 
-            // y el botón se pone morado.
-            volverMenu.image.color = new Color(170, 0, 255);                        
+                // sale un mensaje de derrota
+                finishText.GetComponent<Text>().text = "Has\nperdido :'(";
+
+                // y el botón se pone morado.
+                volverMenu.image.color = new Color(170, 0, 255);
+            }
         }
     }
 

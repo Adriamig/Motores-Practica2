@@ -21,7 +21,7 @@ public class Laser : MonoBehaviour
         miNave = gameObject.GetComponent<SpriteRenderer>().sprite;
 
         // Ponemos el sprite de la nave  mejorada.
-        gameObject.GetComponent<SpriteRenderer>().sprite = naveFire; 
+        gameObject.GetComponent<SpriteRenderer>().sprite = naveFire;
     }
 
     void Update()
@@ -29,8 +29,8 @@ public class Laser : MonoBehaviour
         // En el caso de darle al spacebar y estar jugando,
         if (Input.GetKeyDown(KeyCode.Space) && GameManager.instance.GetJugando()) 
         {
-            // instancia un Fire en el lugar del spawn.
-            Instantiate<GameObject>(firePref, spawnLaser); 
+             // instancia un Fire en el lugar del spawn.
+             Instantiate<GameObject>(firePref, spawnLaser);
         }
     }
 

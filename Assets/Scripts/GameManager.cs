@@ -42,14 +42,14 @@ public class GameManager : MonoBehaviour
     {
         // Restamos una vida.
         vidas--;
-
-        // Actualizamos el UI para que ponga las vidas que tenemos.
-        theUIManager.LifeLost(vidas);
+        if (theUIManager != null)
+            // Actualizamos el UI para que ponga las vidas que tenemos.
+            theUIManager.LifeLost(vidas);
 
         // Si llegamos a tener 0 vidas y seguimos jugando,
         if (vidas == 0 && jugando)
-
-        { // llamamos al método para saber que hemos acabado perdiendo.
+        { 
+            // llamamos al método para saber que hemos acabado perdiendo.
             LevelFinished(false);      
         }
 
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Ladrillos: " + brick);
 
         // Si llegamos a 0 bricks, seguimos con vida y estamos jugando,
-        if (brick == 0 && vidas != 0 && jugando)
+        if (brick == 0 && jugando)
             // llamamos al método para saber que hemos acabado ganando.
             LevelFinished(true);  
     }
@@ -91,40 +91,43 @@ public class GameManager : MonoBehaviour
     // Método para cambiar de nivel o avisar al UI de que hemos acabado.
     private void LevelFinished(bool playerWins)
     {
-        // Hemos acabado de jugar.
-        jugando = false;
-        // Si hemos pasado el nivel,
-        if (playerWins)         
+        if (theUIManager != null)
         {
-            // y estamos en el nivel1.
-            if (SceneManager.GetActiveScene().name == "Level1")
+            // Hemos acabado de jugar.
+            jugando = false;
+            // Si hemos pasado el nivel,
+            if (playerWins)
+            {
+                // y estamos en el nivel1.
+                if (SceneManager.GetActiveScene().name == "Level1")
 
-                // pasamos al nivel2.
-                SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+                    // pasamos al nivel2.
+                    SceneManager.LoadScene("Level2", LoadSceneMode.Single);
 
-            // En el caso de estar en el nivel2,
+                // En el caso de estar en el nivel2,
+                else
+                {   // avisamos al UI de que hemos acabado ganando,
+                    theUIManager.FinishGame(playerWins);
+
+                    // actualizamos los puntos a 0
+                    puntos = 0;
+
+                    // y actualizamos las vidas a 3.
+                    vidas = 3;
+                }
+            }
+            // Si hemos perdido,
             else
-            {   // avisamos al UI de que hemos acabado ganando,
+            {
+                // avisamos al UI de que hemos acabado perdiendo,
                 theUIManager.FinishGame(playerWins);
 
                 // actualizamos los puntos a 0
                 puntos = 0;
 
                 // y actualizamos las vidas a 3.
-                vidas = 3;                           
+                vidas = 3;
             }
-        }
-        // Si hemos perdido,
-        else
-        {
-            // avisamos al UI de que hemos acabado perdiendo,
-            theUIManager.FinishGame(playerWins);
-
-            // actualizamos los puntos a 0
-            puntos = 0;
-
-            // y actualizamos las vidas a 3.
-            vidas = 3;                          
         }
     }
 

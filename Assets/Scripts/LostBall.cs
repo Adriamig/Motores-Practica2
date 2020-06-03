@@ -16,8 +16,27 @@ public class LostBall : MonoBehaviour
 
     public void OnLost()
     {
-        // Si el GameManager le dice que tiene vidas (== true),
-        if (GameManager.instance.PlayerLoseLife()) 
+        if(GameManager.instance != null)
+        {
+            // Si el GameManager le dice que tiene vidas (== true),
+            if (GameManager.instance.PlayerLoseLife())
+            {
+                // hacemos que la Bola sea cinemática,
+                rb.isKinematic = true;
+
+                // le quitamos la velocidad que tenía,
+                rb.velocity = Vector2.zero;
+
+                // ponemos de padre la pala, la cual tiene de hijo al spawnPoint,
+                transform.SetParent(spawnPoint.parent);
+
+                // y la colocamos en la posición del spawnPoint.
+                transform.position = spawnPoint.position;
+            }
+            // En caso contario, destruimos la Bola.
+            else Destroy(gameObject);
+        }
+        else
         {
             // hacemos que la Bola sea cinemática,
             rb.isKinematic = true;
@@ -29,9 +48,7 @@ public class LostBall : MonoBehaviour
             transform.SetParent(spawnPoint.parent);
 
             // y la colocamos en la posición del spawnPoint.
-            transform.position = spawnPoint.position;  
-        }
-        // En caso contario, destruimos la Bola.
-        else Destroy(gameObject);                 
+            transform.position = spawnPoint.position;
+        }  
     }
 }
